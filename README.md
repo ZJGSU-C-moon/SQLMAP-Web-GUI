@@ -1,4 +1,5 @@
 # SQLMAP-Web-GUI
+
 Before anything, this project wouldn't even be possible without the awesome development team behind SQLMAP - hats off to them!
 
 This is a PHP Frontend I made to work with the SQLMAP JSON API Server (sqlmapapi.py) to allow for a Web GUI to drive near full functionality of SQLMAP!
@@ -20,7 +21,7 @@ Requirements:
  - Clone this repo to your machine
    - Edit the sqlmap/inc/config.php file so the paths all point to the right locations on your system
    - Copy the entire sqlmap/ directory and contents to your web root directory (cd SQLMAP-Web-GUI && cp -R sqlmap/ /var/www/)
-   - When you want to use, simply fire up the sqlmap API server (python /home/user/tools/sqlmap/sqlmapapi.py -s)
+   - When you want to use, simply fire up the sqlmap API server (python sqlmapapi.py -s)
    - Then you can navigate to the Web GUI address in your Browser to begin (firefox http://127.0.0.1/sqlmap/index.php)
 
 Enjoy!
