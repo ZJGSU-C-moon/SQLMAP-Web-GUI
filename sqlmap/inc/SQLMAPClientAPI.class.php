@@ -313,14 +313,15 @@
           'http'=> array(
             'method'=>"POST",
             'header'=>"Content-Type: application/json\r\n",
-            'content' => '{"option":"' . trim($optstr) . '"}',
+            'content' => '{"'. trim($optstr) .'":"' . trim($optstr) . '"}',
             'timeout' => 60
           )
         );
         $context = stream_context_create($opts);
         $json = json_decode(file_get_contents($this->api . "option/" . $taskid . "/get", false, $context), true);
         if($json['success'] == "true") {
-          return $json[$optstr];
+          echo "Get " . $json['options'][$optstr];
+          return $json['options'][$optstr];
         }
       }
       return false;
@@ -359,6 +360,7 @@
         $context = stream_context_create($opts);
         $json = json_decode(file_get_contents($this->api . "option/" . $taskid . "/set", false, $context), true);
         if($json['success'] == "true") {
+          echo "Set " . $opts['http']['content'] . "<br>";
           return true;
         }
       }
