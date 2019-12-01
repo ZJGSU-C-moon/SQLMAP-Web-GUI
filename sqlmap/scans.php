@@ -448,6 +448,7 @@
       sleep(1);
 
       while($status['status'] == "running") {
+        sleep(5); // Low down check speed
         $status = $sqlmap->checkScanStatus($scanID);            // Continue Checking Scan Status Till Done or Killed
         if(($status['status'] == "terminated") || ($status['status'] == "not running")) { 
           break;                                                // Break on completion or being killed
@@ -477,7 +478,8 @@
                   if($dataEntry['status'] == 1) {
                     switch($dataEntry['type']) {
                       case "0":
-                        // 0 => Injection Details (Vuln Parameter, Injection Type, Base Payload, etc)
+                        ;
+                      case "1": // Injection Details (Vuln Parameter, Injection Type, Base Payload, etc)
                         if(($dataEntry['status'] == 1) && (sizeof($dataEntry['value']) > 0)) {
                           if(!$displayed) {
                             echo "[*] Target URL: " . htmlentities($options_to_enable['url'], ENT_QUOTES, 'UTF-8') . "\n";
@@ -538,47 +540,42 @@
                         }
                         break;
 
-                      case "1":
-                        // Exhaustive DBMS Fingerprinting
+                      case "2": // Exhaustive DBMS Fingerprinting
                         if($dataEntry['status'] == 1) {
                           echo "[*] DBMS Extensive Fingerprint:\n   [*] " . htmlentities($dataEntry['value'], ENT_QUOTES, 'UTF-8') . "\n";
                           $scanResultsStrCopy .= "[*] DBMS Extensive Fingerprint:\n   [*] " . $dataEntry['value'] . "\n";
                         }
                         break;
 
-                      case "2":
-                        // Banner or Version Info
+                      case "3": // Banner or Version Info
                         if($dataEntry['status'] == 1) {
                           echo "[*] Database Banner: " . htmlentities($dataEntry['value'], ENT_QUOTES, 'UTF-8') . "\n";
                           $scanResultsStrCopy .= "[*] Database Banner: " . $dataEntry['value'] . "\n";
                         }
                         break;
 
-                      case "3":
-                        // Current DB User
+                      case "4": // Current DB User
                         if($dataEntry['status'] == 1) {
                           echo "[*] Current DB User: " . htmlentities($dataEntry['value'], ENT_QUOTES, 'UTF-8') . "\n";
                           $scanResultsStrCopy .= "[*] Current DB User: " . $dataEntry['value'] . "\n";
                         }
                         break;
 
-                      case "4":
-                        // Current DB
+                      case "5": // Current DB
                         if($dataEntry['status'] == 1) {
                           echo "[*] Current DB: " . htmlentities($dataEntry['value'], ENT_QUOTES, 'UTF-8') . "\n";
                           $scanResultsStrCopy .= "[*] Current DB: " . $dataEntry['value'] . "\n";
                         }
                         break;
 
-                      case "5":
-                        // Hostname
+                      case "6": // Hostname
                         if($dataEntry['status'] == 1) {
                           echo "[*] Hostname: " . htmlentities($dataEntry['value'], ENT_QUOTES, 'UTF-8') . "\n";
                           $scanResultsStrCopy .= "[*] Hostname: " . $dataEntry['value'] . "\n";
                         }
                         break;
 
-                      case "6":
+                      case "11111":
                         // Is Current User DBA - Boolean
                         if($dataEntry['value'] == 1) {
                           echo "[*] Is DBA: TRUE\n";
@@ -589,8 +586,7 @@
                         }
                         break;
 
-                      case "7":
-                        // All DB Users
+                      case "8": // All DB Users
                         if(sizeof($dataEntry['value']) > 0) {
                           echo "[*] Database User Accounts: \n";
                           $scanResultsStrCopy .= "[*] Database User Accounts: \n";
@@ -601,8 +597,7 @@
                         }
                         break;
 
-                      case "8":
-                        // All DB User Passwords
+                      case "9": // All DB User Passwords
                         if(sizeof($dataEntry['value']) > 0) {
                           echo "[*] DB User Passwords: \n";
                           $scanResultsStrCopy .= "[*] DB User Passwords: \n";
@@ -617,8 +612,7 @@
                         }
                         break;
 
-                      case "9":
-                        // DB User Privileges
+                      case "10": // DB User Privileges
                         if(sizeof($dataEntry['value']) > 0) {
                           echo "[*] DB User Privileges: \n";
                           $scanResultsStrCopy .= "[*] DB User Privileges: \n";
@@ -635,8 +629,7 @@
                         }
                         break;
 
-                      case "10":
-                        // DB User Roles
+                      case "11": // DB User Roles
                         if(sizeof($dataEntry['value']) > 0) {
                           echo "[*] DB User Roles: \n";
                           $scanResultsStrCopy .= "[*] DB User Roles: \n";
@@ -653,19 +646,7 @@
                         }
                         break;
 
-                      case "11":
-                        // Available Databases
-                        if(sizeof($dataEntry['value']) > 0) {
-                          echo "[*] Available Database(s): \n";
-                          $scanResultsStrCopy .= "[*] Available Database(s): \n";
-                          foreach($dataEntry['value'] as $avlbldb) {
-                            echo "   [+] " . htmlentities($avlbldb, ENT_QUOTES, 'UTF-8') . "\n";
-                            $scanResultsStrCopy .= "   [+] " . $avlbldb . "\n";
-                          }
-                        }
-                        break;
-
-                      case "12":
+                      case "111111":
                         // Tables by Database
                         if(sizeof($dataEntry['value']) > 0) {
                           if((isset($options_to_enable['search'])) && (isset($options_to_enable['tbl']))) {
@@ -696,6 +677,17 @@
                                 $scanResultsStrCopy .= "         [+] " . $tbl . "\n";
                               }
                             }
+                          }
+                        }
+                        break;
+
+                      case "12": // Available Databases
+                        if(sizeof($dataEntry['value']) > 0) {
+                          echo "[*] Available Database(s): \n";
+                          $scanResultsStrCopy .= "[*] Available Database(s): \n";
+                          foreach($dataEntry['value'] as $avlbldb) {
+                            echo "   [+] " . htmlentities($avlbldb, ENT_QUOTES, 'UTF-8') . "\n";
+                            $scanResultsStrCopy .= "   [+] " . $avlbldb . "\n";
                           }
                         }
                         break;
@@ -1014,7 +1006,8 @@
 
   include_once("footer.php");
 
-  if((isset($scanID)) && (trim($scanID) != "")) {
+  if(0) {
+  //if((isset($scanID)) && (trim($scanID) != "")) {
     $sqlmap->deleteTaskID($scanID); // Delete Scan Task
 
     // Cleanup Payload Files from any File Write Activities...
