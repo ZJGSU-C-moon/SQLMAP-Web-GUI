@@ -575,8 +575,7 @@
                         }
                         break;
 
-                      case "11111":
-                        // Is Current User DBA - Boolean
+                      case "7": // Is Current User DBA - Boolean
                         if($dataEntry['value'] == 1) {
                           echo "[*] Is DBA: TRUE\n";
                           $scanResultsStrCopy .= "[*] Is DBA: TRUE\n";
@@ -646,8 +645,18 @@
                         }
                         break;
 
-                      case "111111":
-                        // Tables by Database
+                      case "12": // Available Databases
+                        if(sizeof($dataEntry['value']) > 0) {
+                          echo "[*] Available Database(s): \n";
+                          $scanResultsStrCopy .= "[*] Available Database(s): \n";
+                          foreach($dataEntry['value'] as $avlbldb) {
+                            echo "   [+] " . htmlentities($avlbldb, ENT_QUOTES, 'UTF-8') . "\n";
+                            $scanResultsStrCopy .= "   [+] " . $avlbldb . "\n";
+                          }
+                        }
+                        break;
+
+                      case "13": // Tables by Database
                         if(sizeof($dataEntry['value']) > 0) {
                           if((isset($options_to_enable['search'])) && (isset($options_to_enable['tbl']))) {
                             echo "[*] Table Search Term: " . htmlentities($options_to_enable['tbl'], ENT_QUOTES, 'UTF-8') . " \n";
@@ -681,19 +690,7 @@
                         }
                         break;
 
-                      case "12": // Available Databases
-                        if(sizeof($dataEntry['value']) > 0) {
-                          echo "[*] Available Database(s): \n";
-                          $scanResultsStrCopy .= "[*] Available Database(s): \n";
-                          foreach($dataEntry['value'] as $avlbldb) {
-                            echo "   [+] " . htmlentities($avlbldb, ENT_QUOTES, 'UTF-8') . "\n";
-                            $scanResultsStrCopy .= "   [+] " . $avlbldb . "\n";
-                          }
-                        }
-                        break;
-
-                      case "13":
-                        // Columns, by Table, by Database
+                      case "14": // Columns, by Table, by Database
                         if((isset($options_to_enable['search'])) && (isset($options_to_enable['col']))) {
                           echo "[*] Column Search Term: " . htmlentities($options_to_enable['col'], ENT_QUOTES, 'UTF-8') . " \n";
                           $scanResultsStrCopy .= "   [*] Column Search Term: " . $options_to_enable['col'] . " \n";
@@ -728,8 +725,7 @@
                         }
                         break;
 
-                      case "14":
-                        // Full Schema (All Databases) & Associated Table & Column Mappings
+                      case "15": // Full Schema (All Databases) & Associated Table & Column Mappings
                         if(sizeof($dataEntry['value']) > 0) {
                           echo "\n[*] Available Schema & Table Mappings: \n";
                           $scanResultsStrCopy .= "\n[*] Available Schema & Table Mappings: \n";
@@ -750,13 +746,10 @@
                         }
                         break;
 
-                      case "15":
-                        // TBD
-                        $scanResultsStrCopy .= "";
-                        break;
-
                       case "16":
-                        // DB Data Dump Results
+                        ;
+
+                      case "17": // DB Data Dump Results
                         if((sizeof($dataEntry['value']) > 0) && (sizeof($dataEntry['value']['__infos__']) > 0)) {
                           if(!$displayed) { echo "\n"; }
                           echo "[*] DB Data Dump: \n";
@@ -783,11 +776,6 @@
                             $scanResultsStrCopy .= "         [+] " . preg_replace("#, $#", "", $lineDump) . "\n";
                           }
                         }
-                        break;
-
-                      case "17":
-                        // TBD
-                        $scanResultsStrCopy .= "";
                         break;
 
                       case "18":
@@ -1006,8 +994,7 @@
 
   include_once("footer.php");
 
-  if(0) {
-  //if((isset($scanID)) && (trim($scanID) != "")) {
+  if((isset($scanID)) && (trim($scanID) != "")) {
     $sqlmap->deleteTaskID($scanID); // Delete Scan Task
 
     // Cleanup Payload Files from any File Write Activities...
