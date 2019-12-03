@@ -74,9 +74,14 @@
         <br /><br />
         <input type="submit" class="btn" name="submit" value="Run SQLMAP Web Scan"/>
         <br /><br />
+        <style>.abc{ float:right; width:200px;}</style>
+        <div class="abc">
+        <a href="/SQLMAP-Web-GUI/sqlmap/">English</a>/<a href="/SQLMAP-Web-GUI/sqlmap_zh/">Chinese</a>
+        </div>
       </form>
     </div>
 
+    
 
   <?php
   include_once("footer.php");                  // Bring in our Page Footer Content

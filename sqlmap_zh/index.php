@@ -74,6 +74,10 @@
         <br /><br />
         <input type="submit" class="btn" name="submit" value="Run SQLMAP Web Scan"/>
         <br /><br />
+        <style>.abc{ float:right; width:200px;}</style>
+        <div class="abc">
+        <a href="/SQLMAP-Web-GUI/sqlmap/">英文</a>/<a href="/SQLMAP-Web-GUI/sqlmap_zh/">中文</a>
+        </div>
       </form>
     </div>
 
