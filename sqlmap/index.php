@@ -76,7 +76,7 @@
         <br /><br />
         <style>.abc{ float:right; width:200px;}</style>
         <div class="abc">
-        <a href="/SQLMAP-Web-GUI/sqlmap/">English</a>/<a href="/SQLMAP-Web-GUI/sqlmap_zh/">Chinese</a>
+        <a href="../sqlmap/">English</a>/<a href="../sqlmap_zh/">Chinese</a>
         </div>
       </form>
     </div>

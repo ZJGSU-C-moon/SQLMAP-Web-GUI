@@ -6,14 +6,14 @@
 
   // Already Authorized, no need to login again...
   if($_SESSION['authenticated'] == true) {
-    header("Location: /sqlmap/admin/index.php");
+    header("Location: ./admin/index.php");
   }
 
   $bad_pass = 'no';
   include("../inc/config.php");
   if((trim($_POST['username']) == ADMIN_USER) && (trim($_POST['password']) == ADMIN_USER)) {
     $_SESSION['authenticated'] = true;
-    header("Location: /sqlmap/admin/index.php");
+    header("Location: ./admin/index.php");
   } else {
     if((isset($_POST['username'])) && (isset($_POST['password']))) {
       $bad_pass = 'yes';
@@ -32,11 +32,11 @@
     <title id="ttl">SQLMAP Web GUI - Admin Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/sqlmap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/sqlmap/css/css.css">
-    <script src="/sqlmap/js/jquery.min.js"></script>
-    <script src="/sqlmap/js/bootstrap.min.js"></script>
-    <script src="/sqlmap/js/sqlmap.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/css.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/sqlmap.js"></script>
   </head>
   <body>
     <br />
@@ -54,7 +54,7 @@
             }
           ?>
           <div class="account-wall">
-            <form class="form-horizontal" role="form" id="myLoginForm" action="/sqlmap/admin/login.php" method="POST">
+            <form class="form-horizontal" role="form" id="myLoginForm" action="./admin/login.php" method="POST">
               <input type="hidden" name="token" value="<?php echo $token; ?>">
               <input type="text" name="username" class="form-control" placeholder="Username" required autofocus><br />
               <input type="password" name="password" class="form-control" placeholder="Password" required><br />

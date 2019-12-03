@@ -31,7 +31,7 @@
         </p>
       </div>
 
-      <form class="form-horizontal" role="form" id="myForm" action="/sqlmap/scans.php" method="POST" target="_blank">
+      <form class="form-horizontal" role="form" id="myForm" action="./scans.php" method="POST" target="_blank">
         <input type="hidden" name="token" value="<?php echo $token; ?>">
         <div class="settings" id="settings">
           <div class="nav_wrap" id="nav_wrap">
@@ -76,7 +76,7 @@
         <br /><br />
         <style>.abc{ float:right; width:200px;}</style>
         <div class="abc">
-        <a href="/SQLMAP-Web-GUI/sqlmap/">英文</a>/<a href="/SQLMAP-Web-GUI/sqlmap_zh/">中文</a>
+        <a href="../sqlmap/">英文</a>/<a href="../sqlmap_zh/">中文</a>
         </div>
       </form>
     </div>

@@ -11,7 +11,7 @@
   define('SQLMAP_BIN_PATH', '$HOME/Tools/sqlmap/');
 
   // Path to SQLMAP's Default Output Directory
-  define('SQLMAP_OUTPUT_PATH', '$HOME/.sqlmap/output/');
+  define('SQLMAP_OUTPUT_PATH', '/Users/assassinq/.sqlmap/output/');
 
   // Define where to write our local scan file archives to
   define('TMP_PATH', '/tmp/sqlmap/');
