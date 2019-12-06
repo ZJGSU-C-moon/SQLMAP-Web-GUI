@@ -8,7 +8,7 @@
 
   // Path to where the core SQLMAP python files can be found
   //    i.e. sqlmap.py, sqlmapapi.py, extra/, tamper/, etc
-  define('SQLMAP_BIN_PATH', '/Users/assassinq/Tools/sqlmap/');
+  define('SQLMAP_BIN_PATH', '$HOME/Tools/sqlmap/');
 
   // Path to SQLMAP's Default Output Directory
   define('SQLMAP_OUTPUT_PATH', '/Users/assassinq/.sqlmap/output/');

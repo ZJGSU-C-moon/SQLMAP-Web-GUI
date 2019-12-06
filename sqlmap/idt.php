@@ -196,14 +196,24 @@
 
                 <label for="select_tamper">Select Tamper Scripts to Use:</label>
                 <select class="form-control" id="select_tamper" name="tamper[]" size="7" multiple>
-                  <option value="" selected="selected">Do NOT Apply Any Tamper Scripts!</option>
+                  <option value="" selected="selected" data-html="true" data-toggle="tooltip" data-placement="bottom" title="123">Do NOT Apply Any Tamper Scripts!</option>
 
                   <?php
                     include("./inc/config.php");
                     $tamperScripts = array_diff(glob(SQLMAP_BIN_PATH . "tamper/*.py"), array(".", "..", SQLMAP_BIN_PATH . "tamper/__init__.py"));
+                    // $tamperScripts = array("apostrophemask.py","apostrophenullencode.py","appendnullbyte.py","base64encode.py");
+                    $title_value['apostrophemask.py'] = "功能：将引号替换为utf-8，用于过滤单引号\r\n平台：ALLALL\r\n脚本使用前：tamper(\"1 AND '1'='1\")\r\n脚本使用后：1 AND %EF%BC%871%EF%BC%87=%EF%BC%871";
+                    $title_value['base64encode.py'] = "功能：替换为base64编码\r\n平台：ALLALL\r\n脚本使用前：tamper(\"1' AND SLEEP(5)#\")\r\n脚本使用后：MScgQU5EIFNMRUVQKDUpIw==";
+                    $title_value['multiplespaces.py'] = "功能：围绕sql关键字添加多个空格\r\n平台：ALL ALL\r\n脚本使用前：tamper('1 UNION SELECT foobar')\r\n脚本使用后：1 UNION SELECT foobar";
+                    $title_value['space2plus.py'] = "功能：用加号替换空格\r\n平台：ALLALL\r\n脚本使用前：tamper('SELECT id FROM users')\r\n脚本使用后：SELECT+id+FROM+users";
+                    $title_value['nonrecursivereplacement.py'] = "功能：作为双重查询语句，用双重语句替代预定义的sql关键字\r\n平台：ALL\r\n脚本使用前：tamper('1 UNION SELECT 2--')\r\n脚本使用后：1 UNIOUNIONN SELESELECTCT 2--";
+                    $title_value['space2randomblank.py'] = "功能：将空格替换为其他有效字符\r\n平台：ALL\r\n脚本使用前：tamper('SELECT id FROM users')\r\n脚本使用后：SELECT%0Did%0DFROM%0Ausers";
+                    $title_value['unionalltounion.py'] = "功能：将union allselect 替换为unionselect\r\n平台：ALL\r\n脚本使用前：tamper('-1 UNION ALL SELECT')\r\n脚本使用后：-1 UNION SELECT";
+                    $title_value['.py'] = "功能：\r\n平台：ALL\r\n脚本使用前：\r\n脚本使用后：";
+    
                     foreach($tamperScripts as $tscript) {
                       $ts = str_replace(SQLMAP_BIN_PATH . "tamper/", "", $tscript);
-                      echo '<option value="tamper/' . $ts . '">' . $ts . '</option>';
+                      echo '<option value="tamper/' . $ts . '" data-html="true" data-toggle="tooltip" data-placement="bottom" title="'.$title_value[$ts].'">' . $ts . '</option>';
                     }
                   ?>
 
