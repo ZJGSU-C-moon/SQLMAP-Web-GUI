@@ -3,21 +3,21 @@
             <div class="row">
               <div class="col-md-3"></div>
               <div class="col-md-6">
-                <label for="select_file_privs">File System Options/选择文件系统:</label>
+                <label for="select_file_privs">文件系统选择：</label>
                 <select class="form-control" id="file_privs" name="file_privs">
-                  <option value="" selected="selected" onClick="divHideAndSeek('display_file_read_data_form', 1); divHideAndSeek('display_file_write_data_form', 1);">None/无</option>
-                  <option value="r" onClick="divHideAndSeek('display_file_read_data_form', 0); divHideAndSeek('display_file_write_data_form', 1);">Read Files from DB Server/浏览数据库服务器文件</option>
-                  <option value="w" onClick="divHideAndSeek('display_file_write_data_form', 0); divHideAndSeek('display_file_read_data_form', 1);">Write Payload Files to Target DB Server/向数据库服务器发送payload</option>
+                  <option value="" selected="selected" onClick="divHideAndSeek('display_file_read_data_form', 1); divHideAndSeek('display_file_write_data_form', 1);">无</option>
+                  <option value="r" onClick="divHideAndSeek('display_file_read_data_form', 0); divHideAndSeek('display_file_write_data_form', 1);">读取数据库服务器文件</option>
+                  <option value="w" onClick="divHideAndSeek('display_file_write_data_form', 0); divHideAndSeek('display_file_read_data_form', 1);">向目标数据库服务器上传文件</option>
                 </select>
                 <div id="display_file_read_data_form" align="central" style="display: none">
                   <br />
-                  <label for="file_read">File to Read/要读取的文件名:</label>
+                  <label for="file_read">要读取的文件名：</label>
                   <input type="text" class="form-control" id="file_read" name="rFile" placeholder="i.e. /etc/passwd or c:/windows/win.ini ">
                   <br />
                 </div>
                 <div id="display_file_write_data_form" align="central" style="display: none">
                   <br />
-                  <label for="file_write">File to Write/要写入的文件名:</label>
+                  <label for="file_write">要写入的文件名：</label>
                   <select class="form-control" id="file_write" name="file_write">
                     <option value="cmdShell" selected="selected" onClick="divHideAndSeek('display_file_write_revShell_data_form', 1);">Basic Web Based Command Shell/网页版命令行Shell</option>
                     <option value="uploader" onClick="divHideAndSeek('display_file_write_revShell_data_form', 1);">Basic File Uploader/普通网页上传</option>
