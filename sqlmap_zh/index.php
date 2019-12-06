@@ -38,7 +38,7 @@
             <ul class="nav nav-tabs nav-justified" role="tablist">
               <li class="active"><a href="#" onClick="tabFlipper(1);" style="font-size=14px; font-weight: bold;">Basic/基本扫描</a></li>
               <li><a href="#" onClick="tabFlipper(3);" style="font-size=14px; font-weight: bold;">Request/请求</a></li>
-              <li><a href="#" onClick="tabFlipper(2);" style="font-size=14px; font-weight: bold;">Injection & Technique/注入/a></li>
+              <li><a href="#" onClick="tabFlipper(2);" style="font-size=14px; font-weight: bold;">Injection & Technique/注入</a></li>
               <li><a href="#" onClick="tabFlipper(6);" style="font-size=14px; font-weight: bold;">Detection/探测</a></li>
               <li><a href="#" onClick="tabFlipper(4);" style="font-size=14px; font-weight: bold;">Enumeration/枚举</a></li>
               <li><a href="#" onClick="tabFlipper(5);" style="font-size=14px; font-weight: bold;">Access/连接</a></li>
