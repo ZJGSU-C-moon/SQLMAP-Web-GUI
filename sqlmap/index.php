@@ -72,11 +72,21 @@
         </div>
 
         <br /><br />
-        <input type="submit" class="btn" name="submit" value="Run SQLMAP Web Scan"/>
+        <div class="col-md-4">
+          <input type="submit" class="btn" name="submit" value="Simple Scan Mode"/>
+        </div>
+        <div class="col-md-4">
+          <input type="submit" class="btn" name="submit" value="Deep Scan Mode"/>
+        </div>
+        <div class="col-md-4">
+          <input type="submit" class="btn" name="submit" value="Start Scan"/>
+        </div>
         <br /><br />
-        <style>.abc{ float:right; width:200px;}</style>
+        <style>
+          .abc{ float:right; width:200px;}
+        </style>
         <div class="abc">
-        <a href="../sqlmap/">English</a>/<a href="../sqlmap_zh/">Chinese</a>
+          <a href="../sqlmap/">EN</a> | <a href="../sqlmap_zh/">ZH</a>
         </div>
       </form>
     </div>
