@@ -19,5 +19,5 @@
   session_destroy();
 
   // All done, redirect user back to login
-  header("location: ./admin/login.php");
+  header("location: ./login.php");
 ?>

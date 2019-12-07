@@ -199,7 +199,7 @@
                   <option value="" selected="selected" data-html="true" data-toggle="tooltip" data-placement="bottom" title="123">Do NOT Apply Any Tamper Scripts!</option>
 
                   <?php
-                    include("./inc/config.php");
+                    include("../src/inc/config.php");
                     $tamperScripts = array_diff(glob(SQLMAP_BIN_PATH . "tamper/*.py"), array(".", "..", SQLMAP_BIN_PATH . "tamper/__init__.py"));
                     $title_value['apostrophemask.py'] = "适用数据库：ALL\r\n作用：将引号替换为utf-8，用于过滤单引号\r\n使用脚本前：tamper(1 AND '1'='1)\r\n使用脚本后：1 AND %EF%BC%871%EF%BC%87=%EF%BC%871";
                     $title_value['base64encode.py'] = "适用数据库：ALL\r\n作用：替换为base64编码\r\n使用脚本前：tamper(1' AND SLEEP(5)#)\r\n使用脚本后：MScgQU5EIFNMRUVQKDUpIw==";

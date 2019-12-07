@@ -4,7 +4,6 @@ jQuery(function() {
     $(this).addClass("active");
   });
 });
-
 function divHideAndSeek(divname, flip) {
   if (flip == 1) {
     document.getElementById(divname).style.display = "none";
@@ -12,7 +11,6 @@ function divHideAndSeek(divname, flip) {
     document.getElementById(divname).style.display = "block";
   }
 }
-
 function tabFlipper(tabNum) {
   if (tabNum == 2) {
     divHideAndSeek("settings_basics_container", 1);
@@ -58,7 +56,6 @@ function tabFlipper(tabNum) {
     divHideAndSeek("settings_access_container", 1);
   }
 }
-
 function techCheck() {
   var selected = [];
   var sel = document.getElementById("technique");
@@ -78,7 +75,6 @@ function techCheck() {
     divHideAndSeek("display_time_based_data_form", 1);
   }
 }
-
 function enumCheck() {
   var selected = [];
   var sel = document.getElementById("enum_options");
@@ -88,11 +84,9 @@ function enumCheck() {
     }
   }
 }
-
 function redirectHome() {
   window.location.href = "./index.php";
 }
-
 function validateMarkerInjection() {
   var pattern = /\*/i;
   if (pattern.test(document.prep_form.target_url.value)) {
@@ -117,16 +111,12 @@ function validateMarkerInjection() {
   document.fuzzForm.target_url.focus();
   return false;
 }
-
 function validate() {
   return true;
 }
-
 function downloadScanResults(hostName) {
-  window.location.href =
-    "./download.php?target=" + encodeURIComponent(hostName);
+  window.location.href = "./download.php?target=" + encodeURIComponent(hostName);
 }
-
 function scanKill(scanId) {
   window.location.href = "./kill.php?id=" + scanId;
 }

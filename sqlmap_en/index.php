@@ -15,7 +15,7 @@
   $token = sha1(mt_rand(1, 1000000) . $salt); // Generate CSRF Token Hash
   $_SESSION['token'] = $token;                // Set CSRF Token for Form Submit Verification
 
-  include_once("header.php");                 // Bring in our Page Header Content
+  include_once("./header.php");                 // Bring in our Page Header Content
   ?>
 
 
@@ -86,7 +86,7 @@
           .abc{ float:right; width:200px;}
         </style>
         <div class="abc">
-          <a href="../sqlmap/">EN</a> | <a href="../sqlmap_zh/">ZH</a>
+          <a href="../sqlmap_en/">EN</a> | <a href="../sqlmap_zh/">ZH</a>
         </div>
       </form>
     </div>
@@ -94,7 +94,7 @@
     
 
   <?php
-  include_once("footer.php");                  // Bring in our Page Footer Content
+  include_once("./footer.php");                  // Bring in our Page Footer Content
 
 
   /*

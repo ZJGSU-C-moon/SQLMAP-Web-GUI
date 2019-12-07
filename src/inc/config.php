@@ -19,7 +19,7 @@
   // Path to the local Metasploit directory
   // May be used to generate shellcode for advanced exploit functionalities
   // May also use for building of reverse shell payloads for file writer, tbd...
-  define('MSF_PATH', '$HOME/Tools/msf/');
+  define('MSF_PATH', '$PATH_TO_MSF');
 
   // Admin Username & Password
   // *For future admin panel to flush and kill scan tasks....

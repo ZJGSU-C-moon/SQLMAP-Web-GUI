@@ -7,10 +7,10 @@
     header("Location: ./index.php");
   }
 
-  include("./inc/config.php");
-  include("./inc/SQLMAPClientAPI.class.php");
+  include("../src/inc/config.php");
+  include("../src/inc/SQLMAPClientAPI.class.php");
 
-  include_once("header.php"); 
+  include_once("./header.php"); 
   if((isset($_POST['url'])) && (trim($_POST['url']) != "") && (trim($_POST['token']) == $_SESSION['token'])) {
     if((isset($_POST['submit'])) && (trim($_POST['submit']) != "Start Scan")) {
       include("./mode.php");
@@ -162,7 +162,7 @@
 
   <?php  }
 
-  include_once("footer.php");
+  include_once("./footer.php");
 
   if((isset($scanID)) && (trim($scanID) != "")) {
     $sqlmap->deleteTaskID($scanID); // Delete Scan Task

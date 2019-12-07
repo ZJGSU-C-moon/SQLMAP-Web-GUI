@@ -6,11 +6,11 @@
   if(!$sess) {
     header("Location: ./index.php");
   }
-  include_once("header.php"); 
+  include_once("./header.php"); 
 
   if(isset($_GET['id'])) {
     $id = $_GET['id'];
-    include("./inc/SQLMAPClientAPI.class.php");
+    include("../src/inc/SQLMAPClientAPI.class.php");
     $sqlmap = new SQLMAPClientAPI();
     if(!$sqlmap->stopScan($id)) {
       if(!$sqlmap->killScan($id)) {
