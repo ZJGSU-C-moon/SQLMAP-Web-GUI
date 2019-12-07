@@ -1,6 +1,6 @@
 <?php
 
-  include("./inc/config.php");
+  include("../src/inc/config.php");
 
   // Cleanup api scan logs and any other temp files created from scan sessions
   if((isset($_POST['value'])) && ($_POST['value']=='unload') && (isset($_POST['target']))) {

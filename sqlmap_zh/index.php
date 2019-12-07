@@ -23,11 +23,11 @@
 
       <div class="jumbotron" id="jumbotron">
         <p style="font-size=18px; font-weight: bold;">
-          Welcome to the SQLMAP Web GUI!/SQMAP页面版
+          欢迎来到SQLMAP页面版！
         </p>
         <p style="font-size=12px;">
-          Use the tabs below to configure your scan settings/使用下面的选项卡进行扫描设置，<br />
-          Then simply click on the button at the bottom when done to launch a new scan/点击下方按钮开启一个新的扫描!<br />
+          使用下方选项卡对扫描选项进行设置，<br />
+          并点击底部按钮开始扫描！<br />
         </p>
       </div>
 
@@ -36,12 +36,12 @@
         <div class="settings" id="settings">
           <div class="nav_wrap" id="nav_wrap">
             <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li class="active"><a href="#" onClick="tabFlipper(1);" style="font-size=14px; font-weight: bold;">Basic/基本扫描</a></li>
-              <li><a href="#" onClick="tabFlipper(3);" style="font-size=14px; font-weight: bold;">Request/请求</a></li>
-              <li><a href="#" onClick="tabFlipper(2);" style="font-size=14px; font-weight: bold;">Injection & Technique/注入</a></li>
-              <li><a href="#" onClick="tabFlipper(6);" style="font-size=14px; font-weight: bold;">Detection/探测</a></li>
-              <li><a href="#" onClick="tabFlipper(4);" style="font-size=14px; font-weight: bold;">Enumeration/枚举</a></li>
-              <li><a href="#" onClick="tabFlipper(5);" style="font-size=14px; font-weight: bold;">Access/连接</a></li>
+              <li class="active"><a href="#" onClick="tabFlipper(1);" style="font-size=14px; font-weight: bold;">基础设置</a></li>
+              <li><a href="#" onClick="tabFlipper(3);" style="font-size=14px; font-weight: bold;">请求参数</a></li>
+              <li><a href="#" onClick="tabFlipper(2);" style="font-size=14px; font-weight: bold;">注入方式</a></li>
+              <li><a href="#" onClick="tabFlipper(6);" style="font-size=14px; font-weight: bold;">探测方式</a></li>
+              <li><a href="#" onClick="tabFlipper(4);" style="font-size=14px; font-weight: bold;">爆破选项</a></li>
+              <li><a href="#" onClick="tabFlipper(5);" style="font-size=14px; font-weight: bold;">渗透选项</a></li>
             </ul>
           </div>
           <br />
@@ -72,11 +72,21 @@
         </div>
 
         <br /><br />
-        <input type="submit" class="btn" name="submit" value="Run SQLMAP Web Scan"/>
+        <div class="col-md-4">
+          <input type="submit" class="btn" name="submit" value="Simple Scan Mode"/>
+        </div>
+        <div class="col-md-4">
+          <input type="submit" class="btn" name="submit" value="Deep Scan Mode"/>
+        </div>
+        <div class="col-md-4">
+          <input type="submit" class="btn" name="submit" value="Start Scan"/>
+        </div>
         <br /><br />
-        <style>.abc{ float:right; width:200px;}</style>
-        <div class="abc">
-        <a href="../sqlmap/">英文</a>/<a href="../sqlmap_zh/">中文</a>
+        <style>
+          .lan{ float:right; width:200px;}
+        </style>
+        <div class="lan">
+          <a href="../sqlmap_en/">EN</a> | <a href="../sqlmap_zh/">ZH</a>
         </div>
       </form>
     </div>

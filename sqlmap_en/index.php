@@ -83,9 +83,9 @@
         </div>
         <br /><br />
         <style>
-          .abc{ float:right; width:200px;}
+          .lan{ float:right; width:200px;}
         </style>
-        <div class="abc">
+        <div class="lan">
           <a href="../sqlmap_en/">EN</a> | <a href="../sqlmap_zh/">ZH</a>
         </div>
       </form>

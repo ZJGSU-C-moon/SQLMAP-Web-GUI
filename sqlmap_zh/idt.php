@@ -199,7 +199,7 @@
                   <option value="" selected="selected">Do NOT Apply Any Tamper Scripts/不使用任何篡改脚本!</option>
 
                   <?php
-                    include("./inc/config.php");
+                    include("../src/inc/config.php");
                     $tamperScripts = array_diff(glob(SQLMAP_BIN_PATH . "tamper/*.py"), array(".", "..", SQLMAP_BIN_PATH . "tamper/__init__.py"));
                     foreach($tamperScripts as $tscript) {
                       $ts = str_replace(SQLMAP_BIN_PATH . "tamper/", "", $tscript);

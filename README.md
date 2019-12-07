@@ -4,6 +4,8 @@ Before anything, this project wouldn't even be possible without the awesome deve
 
 This is a PHP Frontend I made to work with the SQLMAP JSON API Server (sqlmapapi.py) to allow for a Web GUI to drive near full functionality of SQLMAP!
 
+## Instruction
+
 Here is a few quick videos I made to show that almost all of your usual SQLMAP command line functionality is still possible via this Web GUI. 
 
 Demo against: Windows 2003 Server, IIS/6.0 + ASP + MS-SQL 2005
@@ -25,4 +27,9 @@ Requirements:
    - Then you can navigate to the Web GUI address in your Browser to begin (firefox http://127.0.0.1/sqlmap/index.php)
 
 Enjoy!
+
+## TODO
+
+- Admin Panel
+- Chinesize
 
