@@ -130,19 +130,19 @@
               </div>
               <div class="col-md-1"></div>
               <div class="col-md-4">
-                <label for="select_technique">Select SQLi Method(s) to Test/选择测试SQLi方法:</label>
+                <label for="select_technique">选择测试SQL注入的方法:</label>
                 <select class="form-control" id="technique" name="tech[]" size="7" onchange="techCheck()" multiple>
-                  <option value="A">Test ALL Methods/测试所有项!</option>
-                  <option value="B" selected="selected">Boolean Based Blind/布尔型盲注</option>
-                  <option value="E">Error Based/</option>
-                  <option value="Q">Inline Queries</option>
-                  <option value="S">Stacked Queries</option>
-                  <option value="T">Time Based Blind/基于时间盲注</option>
-                  <option value="U">Union Based/基础联合注入</option>
+                  <option value="A">测试所有项！</option>
+                  <option value="B" selected="selected">基于布尔型盲注</option>
+                  <option value="E">报错注入/</option>
+                  <option value="Q">内联视图</option>
+                  <option value="S">堆叠查询</option>
+                  <option value="T">基于时间型盲注</option>
+                  <option value="U">基础联合注入</option>
                 </select><br />
 
                 <div class="col-md-4">
-                  <label for="select_scan_level">Scan Level/扫描等级:</label>
+                  <label for="select_scan_level">扫描等级：</label>
                   <select class="form-control" id="select_scan_level" name="level">
                     <option value="1"> 1 </option>
                     <option value="2"> 2 </option>
@@ -152,16 +152,16 @@
                   </select><br />
                 </div>
                 <div class="col-md-4">
-                  <label for="select_scan_risk">Scan Risk/扫描风险:</label>
+                  <label for="select_scan_risk">扫描风险：</label>
                   <select class="form-control" id="select_risk" name="risk">
-                    <option value="0"> None /无</option>
-                    <option value="1"> Low /低</option>
-                    <option value="2" selected="selected"> Med/中 </option>
-                    <option value="3"> Hi/高 </option>
+                    <option value="0"> 无 </option>
+                    <option value="1"> 低 </option>
+                    <option value="2" selected="selected"> 中 </option>
+                    <option value="3"> 高 </option>
                   </select><br />
                 </div>
                 <div class="col-md-3">
-                  <label for="select_thread_count">Threads/线程:</label>
+                  <label for="select_thread_count">线程：</label>
                   <select class="form-control" id="select_thread_count" name="threads">
                     <option value="1" selected="selected"> 1 </option>
                     <?php
@@ -172,9 +172,9 @@
                   </select><br />
                 </div>
 
-                <label for="select_dbms">Select Backend Database Type/选择后端数据库类型:</label>
+                <label for="select_dbms">选择后端数据库类型：</label>
                 <select class="form-control" id="select_dbms" name="dbms">
-                  <option value="" selected="selected">Unknown/未知</option>
+                  <option value="" selected="selected">未知</option>
                   <option value="DB2">DB2</option>
                   <option value="Firebird">Firebird</option>
                   <option value="Microsoft Access">MS-Access</option>
@@ -187,23 +187,24 @@
                   <option value="Sybase">Sybase</option>
                 </select><br />
 
-                <label for="select_os">Select Backend OS Type/选择后端操作系统:</label>
+                <label for="select_os">选择后端操作系统：</label>
                 <select class="form-control" id="select_os" name="os">
-                  <option value="" selected="selected">Unknown/未知</option>
+                  <option value="" selected="selected">未知</option>
                   <option value="Linux">Linux</option>
                   <option value="Windows">Windows</option>
                 </select><br />
 
-                <label for="select_tamper">Select Tamper Scripts to Use/选择篡改脚本:</label>
+                <label for="select_tamper">选择tamper脚本：</label>
                 <select class="form-control" id="select_tamper" name="tamper[]" size="7" multiple>
-                  <option value="" selected="selected">Do NOT Apply Any Tamper Scripts/不使用任何篡改脚本!</option>
+                  <option value="" selected="selected">不使用任何tamper脚本!</option>
 
                   <?php
                     include("../src/inc/config.php");
                     $tamperScripts = array_diff(glob(SQLMAP_BIN_PATH . "tamper/*.py"), array(".", "..", SQLMAP_BIN_PATH . "tamper/__init__.py"));
+                    include("./tamper.php");
                     foreach($tamperScripts as $tscript) {
                       $ts = str_replace(SQLMAP_BIN_PATH . "tamper/", "", $tscript);
-                      echo '<option value="tamper/' . $ts . '">' . $ts . '</option>';
+                      echo '<option value="tamper/' . $ts . '" data-html="true" data-toggle="tooltip" data-placement="bottom" title="'.$title_value[$ts].'">' . $ts . '</option>';
                     }
                   ?>
 

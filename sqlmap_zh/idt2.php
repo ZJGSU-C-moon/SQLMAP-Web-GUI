@@ -3,26 +3,26 @@
             <div class="row">
               <div class="col-md-1"></div>
               <div class="col-md-3">
-                <label for="select_comaprison_text_only">Text Only Page Comparisons/是否比较纯文本页面:</label>
+                <label for="select_comaprison_text_only">是否比较纯文本页面：</label>
                 <select class="form-control" id="select_comaprison_text_only" name="textOnly">
-                  <option value="" selected="selected">Disabled/是</option>
-                  <option value="enabled">Enabled/否</option>
+                  <option value="" selected="selected">是</option>
+                  <option value="enabled">否</option>
                 </select><br />
 
-                <label for="select_comaprison_title_only">Page Title Only Comparisons/是否仅比较页标题:</label>
+                <label for="select_comaprison_title_only">是否仅比较标题：</label>
                 <select class="form-control" id="select_comaprison_title_only" name="titles">
-                  <option value="" selected="selected">Disabled/否</option>
-                  <option value="enabled">Enabled/是</option>
+                  <option value="" selected="selected">否</option>
+                  <option value="enabled">是</option>
                 </select><br />
 
-                <label for="select_comaprison_code">Match HTTP Status Code on True/是否匹配正确HTTP状态下代码:</label>
+                <label for="select_comaprison_code">是否匹配HTTP状态码：</label>
                 <select class="form-control" id="select_comaprison_code" name="comaprison_code">
-                  <option value="" selected="selected" onClick="divHideAndSeek('display_comaprison_code_data_form', 1)">Disabled/否</option>
-                  <option value="enabled" onClick="divHideAndSeek('display_comaprison_code_data_form', 0)">Enabled/是</option>
+                  <option value="" selected="selected" onClick="divHideAndSeek('display_comaprison_code_data_form', 1)">否</option>
+                  <option value="enabled" onClick="divHideAndSeek('display_comaprison_code_data_form', 0)">是</option>
                 </select>
                 <div id="display_comaprison_code_data_form" align="central" style="display: none">
                   <br />
-                  <label for="request_comaprison_code">HTTP Status Code to Match/是匹配HTTP状态代码:</label>
+                  <label for="request_comaprison_code">设置进行匹配的HTTP状态代码：</label>
                   <select class="form-control" id="request_comaprison_code" name="request_comaprison_code">
                     <option value="100"> 100 </option>
                     <option value="101"> 101 </option>
@@ -71,36 +71,36 @@
               </div>
               <div class="col-md-2"></div>
               <div class="col-md-5">
-                <label for="select_comaprison_str">Set Custom String to Match on True/是否设定正确情况下自定义字符:</label>
+                <label for="select_comaprison_str">是否自定义设置正确情况下字符串：</label>
                 <select class="form-control" id="select_comaprison_str" name="comaprison_str">
-                  <option value="" selected="selected" onClick="divHideAndSeek('display_comaprison_str_data_form', 1)">Disabled/是</option>
-                  <option value="enabled" onClick="divHideAndSeek('display_comaprison_str_data_form', 0)">Enabled/否</option>
+                  <option value="" selected="selected" onClick="divHideAndSeek('display_comaprison_str_data_form', 1)">是</option>
+                  <option value="enabled" onClick="divHideAndSeek('display_comaprison_str_data_form', 0)">否</option>
                 </select>
                 <div id="display_comaprison_str_data_form" align="central" style="display: none">
                   <br />
-                  <label for="request_comaprison_str">String to Match on True/正确时字符匹配:</label>
+                  <label for="request_comaprison_str">设置正确时进行匹配的字符串：</label>
                   <input type="text" class="form-control" id="request_comaprison_str" name="request_comaprison_str" placeholder="i.e. string present on original and True pages, but NOT on False ">
                 </div><br />
 
-                <label for="select_comaprison_not_str">Set Custom String to Match on False/是否设定错误情况下自定义字符:</label>
+                <label for="select_comaprison_not_str">是否自定义设置错误情况下字符串：</label>
                 <select class="form-control" id="select_comaprison_not_str" name="comaprison_not_str">
-                  <option value="" selected="selected" onClick="divHideAndSeek('display_comaprison_not_str_data_form', 1)">Disabled/否</option>
-                  <option value="enabled" onClick="divHideAndSeek('display_comaprison_not_str_data_form', 0)">Enabled/是</option>
+                  <option value="" selected="selected" onClick="divHideAndSeek('display_comaprison_not_str_data_form', 1)">否</option>
+                  <option value="enabled" onClick="divHideAndSeek('display_comaprison_not_str_data_form', 0)">是</option>
                 </select>
                 <div id="display_comaprison_not_str_data_form" align="central" style="display: none">
                   <br />
-                  <label for="request_comaprison_not_str">String to Match on False/错误时字符匹配:</label>
+                  <label for="request_comaprison_not_str">设置错误时进行匹配的字符串：</label>
                   <input type="text" class="form-control" id="request_comaprison_not_str" name="request_comaprison_not_str" placeholder="i.e. string NOT present on original or True pages, but is on False ">
                 </div><br />
 
-                <label for="select_comaprison_regex">Set Custom Regex Pattern to Match on True/是否设定正确情况下自定义正则表达式:</label>
+                <label for="select_comaprison_regex">是否自定义正确情况下字符串的正则表达式：</label>
                 <select class="form-control" id="select_comaprison_regex" name="comaprison_regex">
-                  <option value="" selected="selected" onClick="divHideAndSeek('display_comaprison_regex_data_form', 1)">Disabled/是</option>
-                  <option value="enabled" onClick="divHideAndSeek('display_comaprison_regex_data_form', 0)">Enabled/否</option>
+                  <option value="" selected="selected" onClick="divHideAndSeek('display_comaprison_regex_data_form', 1)">是</option>
+                  <option value="enabled" onClick="divHideAndSeek('display_comaprison_regex_data_form', 0)">否</option>
                 </select>
                 <div id="display_comaprison_regex_data_form" align="central" style="display: none">
                   <br />
-                  <label for="request_comaprison_regex_str">Regex Pattern to Match on True/正确时正则表达式匹配:</label>
+                  <label for="request_comaprison_regex_str">设置正确时进行匹配的字符串的正则表达式：</label>
                   <input type="text" class="form-control" id="request_comaprison_regex_str" name="request_comaprison_regex_str" placeholder="i.e. pattern to match on original and true pages, not on false ">
                 </div><br />
 
