@@ -8,10 +8,10 @@
 
   // Path to where the core SQLMAP python files can be found
   //    i.e. sqlmap.py, sqlmapapi.py, extra/, tamper/, etc
-  define('SQLMAP_BIN_PATH', '/Users/assassinq/Tools/sqlmap/');
+  define('SQLMAP_BIN_PATH', '/usr/share/sqlmap/');
 
   // Path to SQLMAP's Default Output Directory
-  define('SQLMAP_OUTPUT_PATH', '/Users/assassinq/.sqlmap/output/');
+  define('SQLMAP_OUTPUT_PATH', '/root/.sqlmap/output/');
 
   // Define where to write our local scan file archives to
   define('TMP_PATH', '/tmp/sqlmap/');
@@ -19,7 +19,7 @@
   // Path to the local Metasploit directory
   // May be used to generate shellcode for advanced exploit functionalities
   // May also use for building of reverse shell payloads for file writer, tbd...
-  define('MSF_PATH', '$PATH_TO_MSF');
+  define('MSF_PATH', '/usr/share/metasploitable-framework/');
 
   // Admin Username & Password
   // *For future admin panel to flush and kill scan tasks....

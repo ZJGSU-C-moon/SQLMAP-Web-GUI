@@ -89,7 +89,7 @@
             <div id="display_scan_info_textarea" align="central" style="display: none">
               <br /><br />
               <label for="scan_info_textarea">Scan Log</label>
-              <textarea class="form-control" id="scan_info_textarea" rows="20">
+              <div class="textbook" id="scan_info_textarea" rows="20">
               <?php
                 echo "\n";
           foreach ($logData as $logEntry) {
@@ -99,33 +99,59 @@
               }
               // Sort log message type, color code them in the future perhaps....
               if ($logEntry['level'] == "INFO") {
-                  echo "[INFO] [" . $logEntry['time'] . "] " . htmlentities($logEntry['message'], ENT_QUOTES, 'UTF-8') . "\n";
+                  echo "<strong>[INFO]</strong> [" . $logEntry['time'] . "] " . htmlentities($logEntry['message'], ENT_QUOTES, 'UTF-8') . "<br>";
               } elseif ($logEntry['level'] == "WARNING") {
-                  echo "[WARNING] [" . $logEntry['time'] . "] " . htmlentities($logEntry['message'], ENT_QUOTES, 'UTF-8') . "\n";
+                  echo "<strong>[WARNING]</strong> [" . $logEntry['time'] . "] " . htmlentities($logEntry['message'], ENT_QUOTES, 'UTF-8') . "<br>";
               } else {
-                  echo "[OTHER] [" . $logEntry['time'] . "] " . htmlentities($logEntry['message'], ENT_QUOTES, 'UTF-8') . "\n";
+                  echo "<strong>[OTHER]</strong> [" . $logEntry['time'] . "] " . htmlentities($logEntry['message'], ENT_QUOTES, 'UTF-8') . "<br>";
               }
           }
           echo "\n"; ?>
-              </textarea>
+              </div>
               <input type="submit" class="btn" name="submit" onClick="divHideAndSeek('display_scan_info_textarea', 1);" value="Hide Scan Log"/>
             </div>
 
             <?php
-              /* DELETE THIS LATER, ONLY FOR DEBUGGING */
-              if (sizeof($scanData['data']) > 0) {
-                  echo '<div id="display_scan_data_textarea" align="central" style="display: none">';
-                  echo '  <br /><br />';
-                  echo '  <label for="scan_data_textarea">Scan Data</label>';
-                  echo '  <textarea class="form-control" id="scan_data_textarea" rows="20">';
-                  print_r($scanData['data']);
-                  echo "\n########################################################################\n";
-                  echo "[*] API Scan Configuration Settings:\n";
-                  print_r($sqlmap->listOptions($scanID));
-                  echo '  </textarea>';
-                  echo '<input type="submit" class="btn" name="submit" onClick="divHideAndSeek(\'display_scan_data_textarea\', 1);" value="Hide Scan Log"/>';
-                  echo '</div>';
-              } ?>
+            function print_rr($content, $return=false)
+            {
+                $output = '<div style=" resize: both; "><pre>'
+        . print_r($content, true) . '</pre></div>';
+ 
+                if ($return) {
+                    return $output;
+                } else {
+                    echo $output;
+                }
+            }
+          function myprint_r($my_array)
+          {
+              if (is_array($my_array)) {
+                  echo "<table border=1 cellspacing=0 cellpadding=3 width=100%>";
+                  echo '<tr><td colspan=2 style="background-color:#333333;"><strong><font color=white>ARRAY</font></strong></td></tr>';
+                  foreach ($my_array as $k => $v) {
+                      echo '<tr><td valign="top" style="width:40px;background-color:#F0F0F0;">';
+                      echo '<strong>' . $k . "</strong></td><td>";
+                      myprint_r($v);
+                      echo "</td></tr>";
+                  }
+                  echo "</table>";
+                  return;
+              }
+              echo $my_array;
+          }
+          /* DELETE THIS LATER, ONLY FOR DEBUGGING */
+          if (sizeof($scanData['data']) > 0) {
+              echo '<div id="display_scan_data_textarea" align="central" style="display: none">';
+              echo '  <br /><br />';
+              echo '  <label for="scan_data_textarea">Scan Data</label>';
+              echo '  <div class="textbook" id="scan_data_textarea" rows="20">';
+              myprint_r($scanData['data']);
+              echo "<strong>[*] API Scan Configuration Settings:</strong><br>";
+              myprint_r($sqlmap->listOptions($scanID));
+              echo '  </div>';
+              echo '<input type="submit" class="btn" name="submit" onClick="divHideAndSeek(\'display_scan_data_textarea\', 1);" value="Hide Scan Data"/>';
+              echo '</div>';
+          } ?>
           </div>
         </div>
         <div class="col-md-2"></div>

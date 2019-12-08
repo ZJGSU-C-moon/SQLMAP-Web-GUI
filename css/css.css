@@ -85,3 +85,18 @@ div[class="settings_basics_container"] {
     transform: rotate(1turn);
   }
 }
+
+.textbook {
+  overflow: auto;
+  width: 100%;
+  height: 450px;
+  font: 14px;
+  color: #000;
+  background-color: #fff;
+  border: 1px dotted #999;
+}
+
+.emphasize {
+  color: #811c1c;
+  font-weight: bold;
+}
