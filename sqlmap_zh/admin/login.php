@@ -5,19 +5,19 @@
   $sess = session_id();                       // Current Session ID, use tbd...
 
   // Already Authorized, no need to login again...
-  if($_SESSION['authenticated'] == true) {
-    header("Location: ./ndex.php");
+  if ($_SESSION['authenticated'] == true) {
+      header("Location: ./ndex.php");
   }
 
   $bad_pass = 'no';
-  include("../../src/inc/config.php");
-  if((trim($_POST['username']) == ADMIN_USER) && (trim($_POST['password']) == ADMIN_USER)) {
-    $_SESSION['authenticated'] = true;
-    header("Location: ./index.php");
+  include("../../inc/config.php");
+  if ((trim($_POST['username']) == ADMIN_USER) && (trim($_POST['password']) == ADMIN_USER)) {
+      $_SESSION['authenticated'] = true;
+      header("Location: ./index.php");
   } else {
-    if((isset($_POST['username'])) && (isset($_POST['password']))) {
-      $bad_pass = 'yes';
-    }
+      if ((isset($_POST['username'])) && (isset($_POST['password']))) {
+          $bad_pass = 'yes';
+      }
   }
 
   $salt = "!SQL!";                            // Salt for form token hash generation
@@ -32,11 +32,11 @@
     <title id="ttl">SQLMAP Web GUI - Admin Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../src/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../src/css/css.css">
-    <script src="../../src/js/jquery.min.js"></script>
-    <script src="../../src/js/bootstrap.min.js"></script>
-    <script src="../../src/js/sqlmap.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/css.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/sqlmap.js"></script>
   </head>
   <body>
     <br />
@@ -46,11 +46,11 @@
         <div class="col-sm-6 col-md-4 col-md-offset-4">
           <h1 class="text-center login-title">Admin Login</h1><br />
           <?php
-            if($bad_pass == 'yes') {
-              echo '<div class="epic_fail" align="center">';
-              echo "Bad Username and/or Password!<br />";
-              echo "Please try again or contact the site administrator...<br /><br />";
-              echo "</div>";
+            if ($bad_pass == 'yes') {
+                echo '<div class="epic_fail" align="center">';
+                echo "Bad Username and/or Password!<br />";
+                echo "Please try again or contact the site administrator...<br /><br />";
+                echo "</div>";
             }
           ?>
           <div class="account-wall">

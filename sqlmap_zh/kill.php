@@ -3,19 +3,18 @@
   @set_time_limit(0);
   @session_start();
   $sess = session_id();
-  if(!$sess) {
-    header("Location: ./index.php");
+  if (!$sess) {
+      header("Location: ./index.php");
   }
-  include_once("header.php"); 
+  include_once("header.php");
 
-  if(isset($_GET['id'])) {
-    $id = $_GET['id'];
-    include("../src/inc/SQLMAPClientAPI.class.php");
-    $sqlmap = new SQLMAPClientAPI();
-    if(!$sqlmap->stopScan($id)) {
-      if(!$sqlmap->killScan($id)) {
-        // Problem Stopping/Killing Scan Task, bad id maybe?
-?>
+  if (isset($_GET['id'])) {
+      $id = $_GET['id'];
+      include("../inc/SQLMAPClientAPI.class.php");
+      $sqlmap = new SQLMAPClientAPI();
+      if (!$sqlmap->stopScan($id)) {
+          if (!$sqlmap->killScan($id)) {
+              // Problem Stopping/Killing Scan Task, bad id maybe??>
 
         <div class="epic_fail" align="center">
           <p style="font-size:26px">Epic Failure Stopping Scan/Epic故障停止扫描!</p><br />
@@ -30,9 +29,8 @@
         </div>
 
 <?php
-
-      } else {
-        // Scan Forcefully Killed
+          } else {
+              // Scan Forcefully Killed
 ?>
 
         <div class="epic_fail" align="center">
@@ -43,9 +41,9 @@
         </div>
 
 <?php
-      }
-    } else {
-      // Scan Gracefully Stopped
+          }
+      } else {
+          // Scan Gracefully Stopped
 ?>
 
         <div class="epic_fail" align="center">
@@ -56,7 +54,7 @@
         </div>
 
 <?php
-    }
+      }
   }
   echo "<script>setTimeout('redirectHome()', 5000);</script>";
 

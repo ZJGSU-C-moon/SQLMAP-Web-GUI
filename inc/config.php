@@ -25,5 +25,3 @@
   // *For future admin panel to flush and kill scan tasks....
   define('ADMIN_USER', 'admin');
   define('ADMIN_PASS', 'admin');
-
-?>

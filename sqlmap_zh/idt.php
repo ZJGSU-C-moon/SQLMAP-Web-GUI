@@ -81,8 +81,8 @@
                     <select class="form-control" id="union_col_min" name="union_col_min">
                       <option value="1" selected="selected"> 1 </option>
                       <?php
-                        foreach(range(2, 999) as $number) {
-                          echo "                    <option value=\"$number\"> $number </option>";
+                        foreach (range(2, 999) as $number) {
+                            echo "                    <option value=\"$number\"> $number </option>";
                         }
                       ?>
                     </select><br />
@@ -90,8 +90,8 @@
                     <select class="form-control" id="union_col_max" name="union_col_max">
                       <option value="2" selected="selected"> 2 </option>
                       <?php
-                        foreach(range(3, 1000) as $number) {
-                          echo "                    <option value=\"$number\"> $number </option>";
+                        foreach (range(3, 1000) as $number) {
+                            echo "                    <option value=\"$number\"> $number </option>";
                         }
                       ?>
                     </select><br />
@@ -165,8 +165,8 @@
                   <select class="form-control" id="select_thread_count" name="threads">
                     <option value="1" selected="selected"> 1 </option>
                     <?php
-                      foreach(range(2, 10) as $number) {
-                        echo "                  <option value=\"$number\"> $number </option>";
+                      foreach (range(2, 10) as $number) {
+                          echo "                  <option value=\"$number\"> $number </option>";
                       }
                     ?>
                   </select><br />
@@ -199,12 +199,12 @@
                   <option value="" selected="selected">不使用任何tamper脚本!</option>
 
                   <?php
-                    include("../src/inc/config.php");
+                    include("../inc/config.php");
                     $tamperScripts = array_diff(glob(SQLMAP_BIN_PATH . "tamper/*.py"), array(".", "..", SQLMAP_BIN_PATH . "tamper/__init__.py"));
                     include("./tamper.php");
-                    foreach($tamperScripts as $tscript) {
-                      $ts = str_replace(SQLMAP_BIN_PATH . "tamper/", "", $tscript);
-                      echo '<option value="tamper/' . $ts . '" data-html="true" data-toggle="tooltip" data-placement="bottom" title="'.$title_value[$ts].'">' . $ts . '</option>';
+                    foreach ($tamperScripts as $tscript) {
+                        $ts = str_replace(SQLMAP_BIN_PATH . "tamper/", "", $tscript);
+                        echo '<option value="tamper/' . $ts . '" data-html="true" data-toggle="tooltip" data-placement="bottom" title="'.$title_value[$ts].'">' . $ts . '</option>';
                     }
                   ?>
 

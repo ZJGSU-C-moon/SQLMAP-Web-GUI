@@ -80,8 +80,8 @@
                   <select class="form-control" id="select_row_start" name="limitStart">
                     <option value="" selected="selected"> Disabled </option>
                     <?php
-                      foreach(range(1, 1000) as $number) {
-                        echo "                  <option value=\"$number\"> $number </option>";
+                      foreach (range(1, 1000) as $number) {
+                          echo "                  <option value=\"$number\"> $number </option>";
                       }
                     ?>
                   </select><br />
@@ -92,8 +92,8 @@
                   <select class="form-control" id="select_row_stop" name="limitStop">
                     <option value="" selected="selected"> Disabled </option>
                     <?php
-                      foreach(range(1, 1000) as $number) {
-                        echo "                  <option value=\"$number\"> $number </option>";
+                      foreach (range(1, 1000) as $number) {
+                          echo "                  <option value=\"$number\"> $number </option>";
                       }
                     ?>
                   </select><br />

@@ -32,4 +32,3 @@
   $title_value['chardoubleencode.py'] = "适用数据库：ALL\r\n作用：对给定的payload全部字符使用双重url编码（不处理已经编码的字符）\r\n使用脚本前：tamper('SELECT FIELD FROM%20TABLE')\r\n使用脚本后：%2553%2545%254C%2545%2543%2554%2520%2546%2549%2545%254C%2544%2520%2546%2552%254F%254D%2520%2554%2541%2542%254C%2545";
   $title_value['unmagicquotes.py'] = "适用数据库：ALL\r\n作用：用一个多字节组合%bf%27和末尾通用注释一起替换空格\r\n使用脚本前：tamper(1' AND 1=1)\r\n使用脚本后：1%bf%27 AND 1=1--";
   $title_value['randomcomments.py'] = "适用数据库：ALL\r\n作用：用注释符分割sql关键字\r\n使用脚本前：tamper('INSERT')\r\n使用脚本后：I/**/N/**/SERT";
-?>

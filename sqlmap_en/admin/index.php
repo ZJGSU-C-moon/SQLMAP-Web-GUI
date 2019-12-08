@@ -4,30 +4,30 @@
   @set_time_limit(0);                         // May run long at times, remove time limits on script execution time
   $sess = session_id();                       // Current Session ID, use tbd...
 
-  if($_SESSION['authenticated'] != true) {
-    header("Location: ./login.php");
+  if ($_SESSION['authenticated'] != true) {
+      header("Location: ./login.php");
   }
 
   // Establish Admin ID to manage tasks
-  if((isset($_POST['myAdminID'])) && (strlen(trim($_POST['myAdminID'])) == 32)) {
-    $_SESSION['myAdminID'] = trim($_POST['myAdminID']);
+  if ((isset($_POST['myAdminID'])) && (strlen(trim($_POST['myAdminID'])) == 32)) {
+      $_SESSION['myAdminID'] = trim($_POST['myAdminID']);
   }
 
-  include("../../src/inc/config.php");
-  include("../../src/inc/SQLMAPClientAPI.class.php");
+  include("../../inc/config.php");
+  include("../../inc/SQLMAPClientAPI.class.php");
 
   $salt = "!SQL!";                            // Salt for form token hash generation
   $token = sha1(mt_rand(1, 1000000) . $salt); // Generate CSRF Token Hash
   $_SESSION['token'] = $token;                // Set CSRF Token for Form Submit Verification
 
   $taskConfig = array();
-  if(isset($_SESSION['myAdminID'])) { 
-    $sqlmap = new SQLMAPClientAPI();
+  if (isset($_SESSION['myAdminID'])) {
+      $sqlmap = new SQLMAPClientAPI();
 
-    if((isset($_GET['task'])) && (trim($_GET['task']) != "")) {
-      $actionTaskId = trim($_GET['task']);
-      if(isset($_GET['action'])) {
-        switch(trim($_GET['action'])) {
+      if ((isset($_GET['task'])) && (trim($_GET['task']) != "")) {
+          $actionTaskId = trim($_GET['task']);
+          if (isset($_GET['action'])) {
+              switch (trim($_GET['action'])) {
           case "conf": // Show Config for specified Task ID
             $taskConfig = $sqlmap->listOptions($actionTaskId); // We will actually store it for use in a second...
             break;
@@ -47,8 +47,8 @@
           default: // Do Nothing if nothing is specified...
             break;
         }
+          }
       }
-    }
   }
 ?>
 
@@ -58,11 +58,11 @@
     <title id="ttl">SQLMAP Web GUI - Admin Panel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../src/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../src/css/css.css">
-    <script src="../../src/js/jquery.min.js"></script>
-    <script src="../../src/js/bootstrap.min.js"></script>
-    <script src="../../src/js/sqlmap.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/css.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/sqlmap.js"></script>
   </head>
   <body>
     <br />
@@ -83,10 +83,10 @@
   */
 
   echo "<h1 align=\"center\">SQLMAP Web GUI - Admin Panel</h1>";
-  if(isset($_SESSION['myAdminID'])) { 
-    $taskList = $sqlmap->adminListTasks(trim($_SESSION['myAdminID']));
-    if(!$taskList) {
-?>
+  if (isset($_SESSION['myAdminID'])) {
+      $taskList = $sqlmap->adminListTasks(trim($_SESSION['myAdminID']));
+      if (!$taskList) {
+          ?>
 
     <br />
     <div class="container">
@@ -105,8 +105,8 @@
     </div>
 
 <?php
-    } else {
-?>
+      } else {
+          ?>
     <br />
     <div class="container">
       <div class="row">
@@ -124,15 +124,15 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                   <?php
-                  if((isset($_GET['task'])) && (isset($_GET['action'])) && (trim($_GET['action']) == "conf")) {
-                    echo '<br /><br />';
-                    echo '<label for="results_textarea">ScanID: ' . htmlentities(trim($_GET['task']), ENT_QUOTES, 'UTF-8') . ', API Scan Configuration</label>';
-                    echo '<textarea class="form-control" id="task_configuration_textarea" rows="20">';
-                    echo "[*] API Scan Configuration:\n";
-                    print_r(htmlentities($sqlmap->listOptions(trim($_GET['task']))['options']), ENT_QUOTES, 'UTF-8');
-                    echo '</textarea><br />';
+                  if ((isset($_GET['task'])) && (isset($_GET['action'])) && (trim($_GET['action']) == "conf")) {
+                      echo '<br /><br />';
+                      echo '<label for="results_textarea">ScanID: ' . htmlentities(trim($_GET['task']), ENT_QUOTES, 'UTF-8') . ', API Scan Configuration</label>';
+                      echo '<textarea class="form-control" id="task_configuration_textarea" rows="20">';
+                      echo "[*] API Scan Configuration:\n";
+                      print_r(htmlentities($sqlmap->listOptions(trim($_GET['task']))['options']), ENT_QUOTES, 'UTF-8');
+                      echo '</textarea><br />';
                   } else {
-                  ?>
+                      ?>
                     <table class="table table-hover" id="adminTasksDisplayTable">
                       <thead>
                         <tr>
@@ -144,39 +144,39 @@
                       </thead>
                       <tbody>
                       <?php
-                        foreach($taskList['tasks'] as $t) {
-                          $status = $sqlmap->checkScanStatus($t);
-                          $taskConfig = $sqlmap->listOptions($t);
-                          echo "<tr>";
+                        foreach ($taskList['tasks'] as $t) {
+                            $status = $sqlmap->checkScanStatus($t);
+                            $taskConfig = $sqlmap->listOptions($t);
+                            echo "<tr>";
                             echo "<td>";
                             echo htmlentities($t, ENT_QUOTES, 'UTF-8');
                             echo "</td>";
-                            if(sizeof($taskConfig) > 0) {
-                              $targetHost = parse_url($taskConfig['options']['url'], PHP_URL_HOST);
-                              echo "<td>" . htmlentities($targetHost, ENT_QUOTES, 'UTF-8') . "</td>";
+                            if (sizeof($taskConfig) > 0) {
+                                $targetHost = parse_url($taskConfig['options']['url'], PHP_URL_HOST);
+                                echo "<td>" . htmlentities($targetHost, ENT_QUOTES, 'UTF-8') . "</td>";
                             } else {
-                              echo "<td> - </td>";
+                                echo "<td> - </td>";
                             }
-                            if(isset($status['status'])) {
-                              echo "<td>" . htmlentities($status['status'], ENT_QUOTES, 'UTF-8') . "</td>";
+                            if (isset($status['status'])) {
+                                echo "<td>" . htmlentities($status['status'], ENT_QUOTES, 'UTF-8') . "</td>";
                             } else {
-                              echo "<td> - </td>";
+                                echo "<td> - </td>";
                             }
                             echo "<td> <a href=\"./index.php?task=" . htmlentities($t, ENT_QUOTES, 'UTF-8') . "&action=conf\" target=\"_blank\">Conf</a> </td>";
-                            if($status['status'] == 'running') {
-                              echo "<td> <a href=\"./index.php?task=" . htmlentities($t, ENT_QUOTES, 'UTF-8') . "&action=stop\">Stop</a> </td>";
-                              echo "<td> <a href=\"./index.php?task=" . htmlentities($t, ENT_QUOTES, 'UTF-8') . "&action=kill\">Kill</a> </td>";
+                            if ($status['status'] == 'running') {
+                                echo "<td> <a href=\"./index.php?task=" . htmlentities($t, ENT_QUOTES, 'UTF-8') . "&action=stop\">Stop</a> </td>";
+                                echo "<td> <a href=\"./index.php?task=" . htmlentities($t, ENT_QUOTES, 'UTF-8') . "&action=kill\">Kill</a> </td>";
                             } else {
-                              echo "<td> - </td>";
-                              echo "<td> - </td>";
+                                echo "<td> - </td>";
+                                echo "<td> - </td>";
                             }
                             echo "<td> <a href=\"./index.php?task=" . htmlentities($t, ENT_QUOTES, 'UTF-8') . "&action=del\">Del</a> </td>";
-                          echo "</tr>";
-                        }
-                      ?>
+                            echo "</tr>";
+                        } ?>
                       </tbody>
                     </table>
-                  <?php } ?>
+                  <?php
+                  } ?>
                 </div>
                 <div class="col-md-2"></div>
               </div>
@@ -188,10 +188,9 @@
       </div>
     </div>
 <?php
-    }
+      }
   } else {
-
-?>
+      ?>
     <br />
     <div class="container">
       <div class="row">
@@ -208,7 +207,6 @@
       </div>
     </div>
 <?php
-
   }
 ?>
 
