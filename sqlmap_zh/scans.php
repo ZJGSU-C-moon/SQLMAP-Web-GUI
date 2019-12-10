@@ -57,7 +57,7 @@
       $status = $sqlmap->checkScanStatus($scanID);              // Check Scan Status
       echo '<br /><br />';
           echo '<div class="scan_info" id="scan_info" align="center" style="width">';  // Info div we can use to fill during scan waiting
-      echo 'Running SQLMAP Scan on Target, hang tight....<br /><br /><br />';      // Message
+      echo '开始使用SQLMAP对目标进行扫描...<br /><br /><br />';      // Message
       echo '<div class="loading"></div>';                                          // Our Spinner...
       echo '</div>';
           echo str_repeat(' ', 1024*64);
